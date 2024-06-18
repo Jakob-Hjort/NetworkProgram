@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using talsystemer.Classes;
@@ -22,13 +21,32 @@ namespace talsystemer
                     case "TemperatureCalculate":
                         ClearTemperatureCalculator();
                         break;
-
                     case "Number_System_Converter":
                         break;
-
                     case "Subnet_calculater":
                         break;
+                    case "Binaer_calculater":
+                        break;
                 }
+            }
+        }
+
+        private void ClearTemperatureCalculator()
+        {
+            txtCelsius.Clear();
+            txtFahrenheit.Clear();
+        }
+
+        private void btnCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(txtCelsius.Text, out double celsius))
+            {
+                double fahrenheit = (celsius * 9 / 5) + 32;
+                txtFahrenheit.Text = fahrenheit.ToString("F2");
+            }
+            else
+            {
+                MessageBox.Show("Indtast en gyldig Celsius værdi.");
             }
         }
 
