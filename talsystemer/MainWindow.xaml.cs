@@ -10,6 +10,7 @@ namespace talsystemer
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
 
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,18 +38,6 @@ namespace talsystemer
             txtFahrenheit.Clear();
         }
 
-        private void btnCalculate_Click(object sender, RoutedEventArgs e)
-        {
-            if (double.TryParse(txtCelsius.Text, out double celsius))
-            {
-                double fahrenheit = (celsius * 9 / 5) + 32;
-                txtFahrenheit.Text = fahrenheit.ToString("F2");
-            }
-            else
-            {
-                MessageBox.Show("Indtast en gyldig Celsius værdi.");
-            }
-        }
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
@@ -150,12 +139,6 @@ namespace talsystemer
                 }
             }
             return true;
-        }
-
-        private void ClearTemperatureCalculator()
-        {
-            txtCelsius.Text = string.Empty;
-            txtFahrenheit.Text = string.Empty;
         }
 
         private void ClearNumberSystemConverter()

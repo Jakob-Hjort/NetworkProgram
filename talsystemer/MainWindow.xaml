@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:talsystemer"
-        Title="Omregner" Height="600" Width="600">
+        Title="Omregner" Height="600" Width="700">
 
     <Window.DataContext>
         <local:MainViewModel/>
@@ -74,32 +74,46 @@
             </TabItem>
 
             <TabItem Header="Binaer converter" Name="Binaer_calculater">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                    <!-- IP Address -->
-                    <TextBlock Text="IP Address:" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5"/>
-                    <TextBox Text="{Binding firstoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="1" Grid.Row="0"/>
-                    <TextBox Text="{Binding secondoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="2" Grid.Row="0"/>
-                    <TextBox Text="{Binding thirdoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="3" Grid.Row="0"/>
-                    <TextBox Text="{Binding fourthoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="4" Grid.Row="0"/>
+                    <!-- Decimal IP Address Input -->
+                    <TextBlock Text="IP Address (Decimal):" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox Text="{Binding FirstOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="50" Grid.Column="1" Grid.Row="0"/>
+                    <TextBox Text="{Binding SecondOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="50" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox Text="{Binding ThirdOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="50" Grid.Column="3" Grid.Row="0"/>
+                    <TextBox Text="{Binding FourthOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="50" Grid.Column="4" Grid.Row="0"/>
 
-                    <!-- Subnet Address -->
-                    <TextBlock Text="Sub Address" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="5"/>
-                    <TextBox Text="{Binding firstoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="1" Grid.Row="1"/>
-                    <TextBox Text="{Binding secondoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="2" Grid.Row="1"/>
-                    <TextBox Text="{Binding thirdoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="3" Grid.Row="1"/>
-                    <TextBox Text="{Binding fourthoctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Height="30" Grid.Column="4" Grid.Row="1"/>
+                    <!-- Binary IP Address Input -->
+                    <TextBlock Text="IP Address (Binary):" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Grid.Row="1"/>
+                    <TextBox Text="{Binding BinFirstOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Grid.Column="1" Grid.Row="1"/>
+                    <TextBox Text="{Binding BinSecondOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox Text="{Binding BinThirdOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Grid.Column="3" Grid.Row="1"/>
+                    <TextBox Text="{Binding BinFourthOctet, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100" Grid.Column="4" Grid.Row="1"/>
+
+                    <!-- IP Class Display -->
+                    <TextBlock Text="IP Class:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Grid.Row="2"/>
+                    <TextBox Text="{Binding IpClass}" Margin="5" Width="150" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+
+                    <!-- IP Validity Display -->
+                    <TextBlock Text="IP Validity:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" Grid.Row="3"/>
+                    <TextBox Text="{Binding IsValid}" Margin="5" Width="150" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3"/>
+
+                    <!-- Calculate Button -->
+                    <Button Content="Calculate" Margin="5" Width="100" HorizontalAlignment="Left" Grid.Column="4" Grid.Row="3" Command="{Binding CalculateCommand}"/>
                 </Grid>
             </TabItem>
         </TabControl>
